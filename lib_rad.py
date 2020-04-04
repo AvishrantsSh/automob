@@ -4,20 +4,23 @@ class radius(object):
 
     def __init__(self,img):
         self.img = img
+        self.coord = []
         radius.dim = img.shape
 
-    def findrad(self):
-        self.binarray()
-        print(radius.dim)
 
-    def binarray(self):
-        arr = []
-        for x in range(radius.dim[1]):
-            tmp = []
-            for y in range(radius.dim[0]):
+    def findrad(self):
+        print(radius.dim)
+        x = 0
+        while x < radius.dim[0]:
+            y = 0
+            while y < radius.dim[1]:
                 if self.img[x][y] == 0:
-                    tmp.append(0)
-                else:
-                    tmp.append(1)
-            arr.append(tmp)
-        
+                    self.coord.append([x,y])
+                    while self.img[x][y] == 0 :
+                        y += 1
+                y += 1
+            x += 1
+
+        print("Got Circle Info")
+                
+        print("Proceeding")

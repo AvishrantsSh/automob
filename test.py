@@ -8,7 +8,7 @@ origimg = cv2.imread("/home/avishrant/GitRepo/automob/TestData/circle.png")
 
 radius = radius(img)
 radius.findrad()
-assert len(img) > 0
+
 cv2.imshow("Image", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
