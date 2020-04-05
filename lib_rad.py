@@ -32,7 +32,7 @@ class radius(object):
                 k = int(k//mcount)
                 r = int(r//mcount)
                 # draw the outer circle
-                cv2.circle(self.img,(h,k),r,(0,255,0),1)
+                cv2.circle(self.img,(h,k),r,(0,255,0),2)
                 # draw the center of the circle
                 cv2.circle(self.img,(h,k),2,(0,0,255),2)
                 
