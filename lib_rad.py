@@ -11,7 +11,7 @@ class radius(object):
     def findrad(self):
         cimg = cv2.cvtColor(self.img,cv2.COLOR_BGR2GRAY)
         cimg = cv2.blur(cimg,(3,3))
-        circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,10,param1=100,param2=60,minRadius=50 ,maxRadius=100)
+        circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,5,param1=80,param2=50,minRadius=50 ,maxRadius=80)
 
         if circles is not None:
             circles = np.uint16(np.around(circles))
@@ -20,7 +20,10 @@ class radius(object):
                 cv2.circle(self.img,(i[0],i[1]),i[2],(0,255,0),2)
                 # draw the center of the circle
                 cv2.circle(self.img,(i[0],i[1]),2,(0,0,255),3)
-
+            print(len(*circles))
+        else:
+            print("None Detected")
+            
         self.imshow()
 
     def imshow(self):
