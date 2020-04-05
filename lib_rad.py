@@ -1,26 +1,31 @@
 #Library for determining the Circle Radius and Other Parameters
+
+import cv2
+import numpy as np
+
 class radius(object):
     dim = []
-
-    def __init__(self,img):
-        self.img = img
-        self.coord = []
-        radius.dim = img.shape
-
-
+    def __init__(self):
+        self.img = cv2.imread("/home/avishrant/GitRepo/automob/TestData/road1.jpeg")
+        
     def findrad(self):
-        print(radius.dim)
-        x = 0
-        while x < radius.dim[0]:
-            y = 0
-            while y < radius.dim[1]:
-                if self.img[x][y] == 0:
-                    self.coord.append([x,y])
-                    while self.img[x][y] == 0 :
-                        y += 1
-                y += 1
-            x += 1
+        cimg = cv2.cvtColor(self.img,cv2.COLOR_BGR2GRAY)
+        cimg = cv2.blur(cimg,(3,3))
+        circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,10,param1=100,param2=60,minRadius=50 ,maxRadius=100)
 
-        print("Got Circle Info")
-                
-        print("Proceeding")
+        if circles is not None:
+            circles = np.uint16(np.around(circles))
+            for i in circles[0,:]:
+                # draw the outer circle
+                cv2.circle(self.img,(i[0],i[1]),i[2],(0,255,0),2)
+                # draw the center of the circle
+                cv2.circle(self.img,(i[0],i[1]),2,(0,0,255),3)
+
+                cv2.imshow('detected circles',self.img)
+                cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+    def imshow(self):
+        cv2.imshow('Image' , self.img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
