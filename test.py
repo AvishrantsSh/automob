@@ -1,3 +1,5 @@
 import lib_rad as rlib
-radius = rlib.radius()
+
+path = "/home/avishrant/GitRepo/automob/TestData/road1.jpeg"
+radius = rlib.radius(path)
 radius.findrad()

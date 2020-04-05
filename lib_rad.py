@@ -5,8 +5,8 @@ import numpy as np
 
 class radius(object):
     dim = []
-    def __init__(self):
-        self.img = cv2.imread("/home/avishrant/GitRepo/automob/TestData/road1.jpeg")
+    def __init__(self,path):
+        self.img = cv2.imread(path)
         
     def findrad(self):
         cimg = cv2.cvtColor(self.img,cv2.COLOR_BGR2GRAY)
