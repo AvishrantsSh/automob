@@ -21,9 +21,7 @@ class radius(object):
                 # draw the center of the circle
                 cv2.circle(self.img,(i[0],i[1]),2,(0,0,255),3)
 
-                cv2.imshow('detected circles',self.img)
-                cv2.waitKey(0)
-            cv2.destroyAllWindows()
+        self.imshow()
 
     def imshow(self):
         cv2.imshow('Image' , self.img)
