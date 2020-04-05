@@ -6,6 +6,7 @@ import numpy as np
 class radius(object):
     dim = []
     max = 80
+    #min = 0
     def __init__(self,path):
         self.img = cv2.imread(path)
         
