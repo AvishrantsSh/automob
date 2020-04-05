@@ -18,26 +18,19 @@ class radius(object):
     def getParam(self,cimg):
 
         for x in range(10,radius.max,5):
-            circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,1,param1=60,param2=50,minRadius=x ,maxRadius=radius.max)
-            if circles is not None and len(*circles) < 10:
+            circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,5,param1=60,param2=50,minRadius=x ,maxRadius=radius.max)
+            if circles is not None and len(*circles) <= 3:
                 h,k,r=0,0,0
                 for i in circles[0,:]:
-                    h += i[0]
-                    k += i[1]
-                    r += i[2]
+                    h = i[0]
+                    k = i[1]
+                    r = i[2]
+                    # draw the outer circle
+                    cv2.circle(self.img,(h,k),r,(0,255,0),1)
+                    # draw the center of the circle
+                    cv2.circle(self.img,(h,k),2,(0,0,255),2)
                     
-                mcount = len(*circles)
-
-                h = int(h//mcount)
-                k = int(k//mcount)
-                r = int(r//mcount)
-                # draw the outer circle
-                cv2.circle(self.img,(h,k),r,(0,255,0),2)
-                # draw the center of the circle
-                cv2.circle(self.img,(h,k),2,(0,0,255),2)
                 
-        
-
     def imshow(self):
         cv2.imshow('Image' , self.img)
         cv2.waitKey(0)
