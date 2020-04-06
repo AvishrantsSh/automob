@@ -7,15 +7,14 @@ class radius(object):
     dim = []
     max = 80
     #min = 0
-    def __init__(self,path):
-        self.img = cv2.imread(path)
+    def __init__(self,img):
+        self.img = img
         
     def findrad(self):
         cimg = cv2.cvtColor(self.img,cv2.COLOR_BGR2GRAY)
         cimg = cv2.blur(cimg,(3,3))
         self.getParam(cimg)
-        self.imshow()
-
+        
     def getParam(self,cimg):
 
         for x in range(10,radius.max,5):
@@ -31,8 +30,5 @@ class radius(object):
                     # draw the center of the circle
                     cv2.circle(self.img,(h,k),2,(0,0,255),2)
                     
-                
-    def imshow(self):
-        cv2.imshow('Image' , self.img)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+              
+    
