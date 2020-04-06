@@ -1,4 +1,4 @@
-import lib_rad as rlib
+import lib_rad_gps as rlib
 import cv2
 
 path = "/home/avishrant/GitRepo/automob/TestData/road1.jpeg"
