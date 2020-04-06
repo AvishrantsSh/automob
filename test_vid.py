@@ -11,7 +11,7 @@ else:
         radius = lib.radius(frame)
         radius.findrad()
         cv2.imshow('preview',frame)
-        if cv2.waitKey(1):
+        if cv2.waitKey(1) != -1:
             break
     
     cam.release()
