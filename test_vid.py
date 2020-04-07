@@ -1,7 +1,8 @@
 import cv2
 import lib_rad_gps as lib
 
-cam = cv2.VideoCapture("/home/avishrant/Desktop/nfs.mp4")
+#cam = cv2.VideoCapture("/home/avishrant/Desktop/nfs.mp4")
+cam = cv2.VideoCapture(0)
 cam.set(cv2.CAP_PROP_FPS, 30)
 
 if not(cam.isOpened()):

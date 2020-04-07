@@ -5,7 +5,7 @@ import numpy as np
 
 class radius(object):
     dim = []
-    max = 150
+    max = 120
     #min = 60
     def __init__(self,img):
         self.img = img
@@ -17,9 +17,9 @@ class radius(object):
         
     def getParam(self,cimg):
 
-        for x in range(10,radius.max,10):
-            circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,10,param1=85,param2=80,minRadius=x ,maxRadius=radius.max)
-            if circles is not None and len(*circles)  < 5:
+        for x in range(25,radius.max,25):
+            circles = cv2.HoughCircles(cimg,cv2.HOUGH_GRADIENT,1,50,param1=70,param2=50,minRadius=x ,maxRadius=radius.max)
+            if circles is not None:
                 h,k,r=0,0,0
                 for i in circles[0,:]:
                     h = i[0]
