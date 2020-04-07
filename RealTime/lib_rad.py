@@ -19,7 +19,7 @@ class ldetect(object):
         #self.mask()
         ldetect.pimg = self.change_perspective(ldetect.pimg)
         # ldetect.pimg = cv2.Sobel(ldetect.pimg,cv2.CV_64F,1,0,ksize=5)
-        #ldetect.pimg = self.inv_perspective(ldetect.pimg)
+        ldetect.pimg = self.inv_perspective(ldetect.pimg)
         self.getlane()
         return self.img
 
